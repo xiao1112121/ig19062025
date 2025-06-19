@@ -405,25 +405,18 @@ class AccountManagementTab(QWidget):
         self.account_table.setHorizontalHeader(self.header_checkbox)
         header = self.header_checkbox  # Gán lại biến header để các dòng code sau vẫn sử dụng được
 
-        header.setSectionResizeMode(0, QHeaderView.Fixed)  # Cột "Chọn"
-        self.account_table.setColumnWidth(0, 29)
-        header.setSectionResizeMode(1, QHeaderView.Fixed)  # Cột "STT"
-        self.account_table.setColumnWidth(1, 29)  # Đặt chiều rộng cột STT thành 29px
-        header.setSectionResizeMode(2, QHeaderView.Fixed)  # Cột "Tên đăng nhập" - Chuyển về Fixed
-        self.account_table.setColumnWidth(2, 150)  # Đặt chiều rộng cố định
-        header.setSectionResizeMode(3, QHeaderView.Fixed)  # Cột "Mật khẩu" - Chuyển về Fixed
-        self.account_table.setColumnWidth(3, 150)  # Đặt chiều rộng cố định
-        header.setSectionResizeMode(4, QHeaderView.Fixed)  # Cột "Trạng thái"
-        self.account_table.setColumnWidth(4, 120)  # Giữ nguyên chiều rộng
-        header.setSectionResizeMode(5, QHeaderView.Fixed)  # Cột "Proxy" - Chuyển về Fixed
-        self.account_table.setColumnWidth(5, 200)  # Đặt chiều rộng cố định
-        header.setSectionResizeMode(6, QHeaderView.Fixed)  # Cột "Trạng thái Proxy"
-        self.account_table.setColumnWidth(6, 150)  # Tăng chiều rộng cố định
-        header.setSectionResizeMode(7, QHeaderView.Fixed)  # Cột "Follower"
-        self.account_table.setColumnWidth(7, 79)
-        header.setSectionResizeMode(8, QHeaderView.Fixed)  # Cột "Following"
-        self.account_table.setColumnWidth(8, 79)
-        header.setSectionResizeMode(9, QHeaderView.Stretch)  # Cột "Hành động cuối" - Giữ nguyên Stretch
+        # Tự động co giãn các cột để vừa với nội dung
+        header.setSectionResizeMode(0, QHeaderView.Fixed)  # Cột "Chọn" - giữ cố định
+        self.account_table.setColumnWidth(0, 40)
+        header.setSectionResizeMode(1, QHeaderView.Fixed)  # Cột "STT" - giữ cố định  
+        self.account_table.setColumnWidth(1, 50)
+        header.setSectionResizeMode(2, QHeaderView.ResizeToContents)  # Tên đăng nhập - tự động
+        header.setSectionResizeMode(3, QHeaderView.ResizeToContents)  # Mật khẩu - tự động
+        header.setSectionResizeMode(4, QHeaderView.Fixed)  # Trạng thái - cố định 170px
+        self.account_table.setColumnWidth(4, 170)
+        header.setSectionResizeMode(5, QHeaderView.ResizeToContents)  # Proxy - tự động
+        header.setSectionResizeMode(6, QHeaderView.ResizeToContents)  # Trạng thái Proxy - tự động
+        header.setSectionResizeMode(7, QHeaderView.Stretch)  # Hành động cuối - giãn hết
         self.account_table.verticalHeader().setDefaultSectionSize(40)
         self.account_table.horizontalHeader().setFixedHeight(40)
 

@@ -12,7 +12,7 @@
 
 /* Main Window - Gradient Background */
 QMainWindow {
-    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #87CEEB, stop:1 #4169E1);
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #F0F8FF, stop:1 #E6F3FF);
 }
 
 /* Header - MKT INSTA Style */
@@ -133,21 +133,23 @@ QGroupBox::title {
 
 /* Buttons - MKT Style */
 QPushButton {
-    background: #4CAF50;
-    color: white;
-    border: none;
+    background: white;
+    color: black;
+    border: 1px solid #D0D0D0;
     border-radius: 3px;
     padding: 6px 12px;
-    font-weight: bold;
+    font-weight: normal;
     min-height: 24px;
 }
 
 QPushButton:hover {
-    background: #45A049;
+    background: #F0F0F0;
+    color: black;
 }
 
 QPushButton:pressed {
-    background: #3D8B40;
+    background: #E0E0E0;
+    color: black;
 }
 
 QPushButton:disabled {
@@ -161,26 +163,14 @@ QPushButton[color="load"] {
     color: white;
 }
 
-QPushButton[color="load"]:hover {
-    background: #FF8C00;
-}
-
 QPushButton[color="start"] {
     background: #4CAF50;
     color: white;
 }
 
-QPushButton[color="start"]:hover {
-    background: #45A049;
-}
-
 QPushButton[color="stop"] {
     background: #F44336;
     color: white;
-}
-
-QPushButton[color="stop"]:hover {
-    background: #D32F2F;
 }
 
 /* Input Fields */
@@ -237,9 +227,10 @@ QTableWidget::item:selected {
 QHeaderView::section {
     background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #F0F0F0, stop:1 #E0E0E0);
     color: #333333;
-    padding: 6px 8px;
+    padding: 8px 8px;
     border: 1px solid #D0D0D0;
-    font-weight: bold;
+    font-weight: normal;
+    font-size: 10pt;
 }
 
 QHeaderView::section:first {
@@ -268,7 +259,6 @@ QCheckBox::indicator {
 QCheckBox::indicator:checked {
     background: #0066CC;
     border: 1px solid #0066CC;
-    image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEwIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDRMMyA2TDkgMSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==);
 }
 
 QCheckBox::indicator:hover {
@@ -339,11 +329,10 @@ QLabel[status="die"] {
 
 /* Footer */
 QFrame#footer {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                stop:0 #1A237E, stop:0.5 #283593, stop:1 #3F51B5);
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1A237E, stop:1 #3F51B5);
     border: none;
-    min-height: 40px;
-    max-height: 40px;
+    min-height: 25px;
+    max-height: 25px;
 }
 
 QLabel#footer_text {
