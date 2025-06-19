@@ -1,0 +1,447 @@
+/* ======================
+   MKT INSTA STYLE - THEO MẪU GIAO DIỆN
+   ====================== */
+
+/* ===== FONT CHUNG ===== */
+* {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-size: 11pt;
+}
+
+/* ===== MAIN WINDOW ===== */
+QMainWindow {
+    background: #f0f8ff;
+    border: none;
+}
+
+/* ===== HEADER GRADIENT ===== */
+QFrame#header {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, 
+                stop:0 #1e88e5, stop:0.3 #42a5f5, stop:0.7 #64b5f6, stop:1 #90caf9);
+    border: none;
+    min-height: 80px;
+    max-height: 80px;
+}
+
+/* ===== LOGO & VERSION INFO ===== */
+QLabel#logo {
+    color: white;
+    font-size: 24pt;
+    font-weight: bold;
+    padding: 10px;
+}
+
+QLabel#version {
+    color: white;
+    font-size: 10pt;
+    padding: 5px;
+}
+
+/* ===== SIDEBAR ===== */
+QFrame#sidebar {
+    background: #ffffff;
+    border-right: 1px solid #d0d0d0;
+    min-width: 180px;
+    max-width: 180px;
+}
+
+/* Sidebar Buttons */
+QPushButton[sidebar="true"] {
+    background: transparent;
+    border: none;
+    padding: 12px 15px;
+    text-align: left;
+    color: #333333;
+    font-size: 11pt;
+    border-radius: 5px;
+    margin: 2px 5px;
+}
+
+QPushButton[sidebar="true"]:hover {
+    background: #e6f3ff;
+    color: #0066cc;
+}
+
+QPushButton[sidebar="true"]:checked {
+    background: #cce7ff;
+    color: #0066cc;
+    font-weight: bold;
+}
+
+/* ===== TAB WIDGET ===== */
+QTabWidget::pane {
+    border: 1px solid #d0d0d0;
+    background: white;
+    border-radius: 5px;
+}
+
+QTabBar::tab {
+    background: #f5f5f5;
+    border: 1px solid #d0d0d0;
+    padding: 8px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #666666;
+    font-weight: normal;
+}
+
+QTabBar::tab:selected {
+    background: #4da6ff;
+    color: white;
+    font-weight: bold;
+    border-bottom: none;
+}
+
+QTabBar::tab:hover:!selected {
+    background: #e6f3ff;
+    color: #0066cc;
+}
+
+/* ===== MAIN CONTENT AREA ===== */
+QWidget#main_content {
+    background: white;
+    border: none;
+}
+
+/* ===== LEFT PANEL (Cấu hình) ===== */
+QFrame#left_panel {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    min-width: 400px;
+    max-width: 450px;
+}
+
+/* ===== RIGHT PANEL (Bảng dữ liệu) ===== */
+QFrame#right_panel {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+}
+
+/* ===== GROUP BOX ===== */
+QGroupBox {
+    font-weight: bold;
+    font-size: 12pt;
+    color: #333333;
+    border: 2px solid #d0d0d0;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 8px 0 8px;
+    color: #0066cc;
+    background: white;
+}
+
+/* ===== BUTTONS ===== */
+/* START Button */
+QPushButton[action="start"] {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: bold;
+    font-size: 12pt;
+    min-height: 35px;
+}
+
+QPushButton[action="start"]:hover {
+    background: #218838;
+}
+
+QPushButton[action="start"]:pressed {
+    background: #1e7e34;
+}
+
+/* STOP Button */
+QPushButton[action="stop"] {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: bold;
+    font-size: 12pt;
+    min-height: 35px;
+}
+
+QPushButton[action="stop"]:hover {
+    background: #c82333;
+}
+
+QPushButton[action="stop"]:pressed {
+    background: #bd2130;
+}
+
+/* LOAD Button */
+QPushButton[action="load"] {
+    background: #ffc107;
+    color: #212529;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: bold;
+    font-size: 12pt;
+    min-height: 35px;
+}
+
+QPushButton[action="load"]:hover {
+    background: #e0a800;
+}
+
+QPushButton[action="load"]:pressed {
+    background: #d39e00;
+}
+
+/* Regular Buttons */
+QPushButton {
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 11pt;
+    min-height: 28px;
+}
+
+QPushButton:hover {
+    background: #5a6268;
+}
+
+QPushButton:pressed {
+    background: #545b62;
+}
+
+/* ===== INPUT FIELDS ===== */
+QLineEdit, QComboBox, QSpinBox {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 6px 10px;
+    background: white;
+    font-size: 11pt;
+    min-height: 20px;
+}
+
+QLineEdit:focus, QComboBox:focus, QSpinBox:focus {
+    border-color: #4da6ff;
+    outline: none;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    border: 2px solid #6c757d;
+    width: 6px;
+    height: 6px;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    margin-right: 8px;
+}
+
+/* ===== TABLES ===== */
+QTableWidget {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    gridline-color: #dee2e6;
+    font-size: 10pt;
+}
+
+QHeaderView::section {
+    background: #4da6ff;
+    color: white;
+    font-weight: bold;
+    font-size: 11pt;
+    border: none;
+    padding: 8px;
+    border-right: 1px solid #3399ff;
+}
+
+QHeaderView::section:last {
+    border-right: none;
+}
+
+QTableWidget::item {
+    padding: 8px;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+QTableWidget::item:selected {
+    background: #cce7ff;
+    color: #0066cc;
+}
+
+QTableWidget::item:alternate {
+    background: #f8f9fa;
+}
+
+/* ===== CHECKBOXES & RADIO BUTTONS ===== */
+QCheckBox, QRadioButton {
+    color: #333333;
+    font-size: 11pt;
+}
+
+QCheckBox::indicator, QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 2px solid #ced4da;
+    background: white;
+    border-radius: 3px;
+}
+
+QCheckBox::indicator:checked {
+    border: 2px solid #4da6ff;
+    background: #4da6ff;
+    border-radius: 3px;
+}
+
+QRadioButton::indicator:unchecked {
+    border: 2px solid #ced4da;
+    background: white;
+    border-radius: 8px;
+}
+
+QRadioButton::indicator:checked {
+    border: 2px solid #4da6ff;
+    background: #4da6ff;
+    border-radius: 8px;
+}
+
+/* ===== SCROLLBARS ===== */
+QScrollBar:vertical {
+    background: #f8f9fa;
+    width: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background: #ced4da;
+    border-radius: 6px;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #adb5bd;
+}
+
+QScrollBar:horizontal {
+    background: #f8f9fa;
+    height: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #ced4da;
+    border-radius: 6px;
+    min-width: 20px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #adb5bd;
+}
+
+/* ===== FOOTER ===== */
+QFrame#footer {
+    background: #1a237e;
+    color: white;
+    min-height: 40px;
+    max-height: 40px;
+    border: none;
+}
+
+QLabel#footer_text {
+    color: white;
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 10px;
+}
+
+QLabel#footer_url {
+    color: #80c0ff;
+    font-size: 11pt;
+    padding: 10px;
+}
+
+/* ===== PROGRESS BAR ===== */
+QProgressBar {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+}
+
+QProgressBar::chunk {
+    background: #4da6ff;
+    border-radius: 4px;
+}
+
+/* ===== TOOLTIPS ===== */
+QToolTip {
+    background: #333333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 10pt;
+}
+
+/* ===== SPLITTER ===== */
+QSplitter::handle {
+    background: #dee2e6;
+    width: 2px;
+    height: 2px;
+}
+
+QSplitter::handle:hover {
+    background: #4da6ff;
+}
+
+/* ===== STATUS INDICATORS ===== */
+QLabel[status="live"] {
+    color: #28a745;
+    font-weight: bold;
+}
+
+QLabel[status="die"] {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+QLabel[status="processing"] {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+/* ===== MODERN CARD STYLE ===== */
+QFrame[card="true"] {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 5px;
+}
+
+QFrame[card="true"]:hover {
+    border-color: #4da6ff;
+    box-shadow: 0 2px 8px rgba(77, 166, 255, 0.2);
+} 
