@@ -19,7 +19,15 @@ class MKTCorrectWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("ABCDBET")
-        self.setGeometry(100, 100, 1200, 850)
+        self.resize(1200, 850)
+        
+        # Căn giữa màn hình
+        screen = QApplication.primaryScreen()
+        screen_geometry = screen.availableGeometry()
+        x = (screen_geometry.width() - 1200) // 2
+        y = (screen_geometry.height() - 850) // 2
+        self.move(x, y)
+        
         self.setup_ui()
         
     def setup_ui(self):

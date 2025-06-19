@@ -423,8 +423,8 @@ class AccountManagementTab(QWidget):
         # Đảm bảo cột cuối cùng kéo giãn để hiển thị đầy đủ nội dung
         header.setStretchLastSection(True)
 
-        # Thiết lập căn lề cho các tiêu đề cột
-        self.account_table.horizontalHeader().setDefaultAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+        # Thiết lập căn lề cho các tiêu đề cột - căng trái
+        self.account_table.horizontalHeader().setDefaultAlignment(Qt.AlignLeft | Qt.AlignVCenter)
 
         self.account_table.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.account_table.setEditTriggers(QTableWidget.NoEditTriggers)  # Disable editing

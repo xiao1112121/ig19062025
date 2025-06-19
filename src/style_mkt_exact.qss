@@ -213,6 +213,7 @@ QTableWidget {
 QTableWidget::item {
     padding: 4px 6px;
     border: none;
+    text-align: left;
 }
 
 QTableWidget::item:alternate {
@@ -231,6 +232,7 @@ QHeaderView::section {
     border: 1px solid #D0D0D0;
     font-weight: normal;
     font-size: 10pt;
+    text-align: left;
 }
 
 QHeaderView::section:first {
