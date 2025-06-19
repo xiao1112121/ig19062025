@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import (QApplication, QMainWindow, QTabWidget,
-                             QWidget, QVBoxLayout, QStyleFactory, QFrame, QMessageBox)
+                             QWidget, QVBoxLayout, QStyleFactory, QFrame, QMessageBox, QLabel)
 from PySide6.QtGui import QCloseEvent
 from PySide6.QtCore import QThread, QTimer
 import os
@@ -121,17 +121,55 @@ class MainWindow(QMainWindow):
         layout.setSpacing(0)
         layout.setContentsMargins(0, 0, 0, 0)
 
-        # Header (logo + nền)
+        # Header (logo + nền) - MKT INSTA Style
         header = QFrame()
+        header.setObjectName("header")
         header.setFixedHeight(80)
-        header.setStyleSheet("background-image: url('cityline.png'); background-repeat: repeat-x; background-position: top center; background-color: #eaf6ff; border: none;")
+        header_layout = QVBoxLayout(header)
+        header_layout.setContentsMargins(20, 10, 20, 10)
+        
+        # Logo và version
+        logo_label = QLabel("🔥 MKT INSTA")
+        logo_label.setObjectName("logo")
+        logo_label.setStyleSheet("color: white; font-size: 24pt; font-weight: bold;")
+        
+        version_label = QLabel("Version 1.2 - Update 19/06/2025")
+        version_label.setObjectName("version")
+        version_label.setStyleSheet("color: rgba(255, 255, 255, 0.9); font-size: 10pt;")
+        
+        header_layout.addWidget(logo_label)
+        header_layout.addWidget(version_label)
+        header_layout.addStretch()
+        
         layout.addWidget(header)
 
-        self.tab_widget = QTabWidget()
+        # Import ModernTabWidget
+        try:
+            from src.ui.modern_tabs import ModernTabWidget
+            self.tab_widget = ModernTabWidget()
+            print("[DEBUG] MainWindow: Sử dụng ModernTabWidget.")
+        except ImportError:
+            self.tab_widget = QTabWidget()
+            print("[DEBUG] MainWindow: Fallback to QTabWidget.")
+        
         layout.addWidget(self.tab_widget)
 
         # Initialize tabs with better error handling
         self.initialize_tabs()
+        
+        # Footer - MKT Style
+        footer = QFrame()
+        footer.setObjectName("footer")
+        footer.setFixedHeight(40)
+        footer_layout = QVBoxLayout(footer)
+        footer_layout.setContentsMargins(20, 5, 20, 5)
+        
+        footer_text = QLabel("🚀 Hiệu quả - Nhanh - Dễ dùng | 🌐 phanmemmkt.vn")
+        footer_text.setObjectName("footer_text")
+        footer_text.setStyleSheet("color: white; font-size: 11pt; font-weight: bold;")
+        
+        footer_layout.addWidget(footer_text)
+        layout.addWidget(footer)
 
         print("[DEBUG] MainWindow: Hoàn tất khởi tạo MainWindow.")
 
@@ -162,7 +200,10 @@ class MainWindow(QMainWindow):
                 print(f"[WARN] MainWindow: Không thể áp dụng timeout limits: {patch_error}")
                 logging.warning(f"Could not apply timeout limits: {patch_error}")
             
-            self.tab_widget.addTab(self.account_tab, "Quản lý Tài khoản")
+            if hasattr(self.tab_widget, 'add_tab_with_icon'):
+                self.tab_widget.add_tab_with_icon(self.account_tab, "👥", "QUẢN LÝ TÀI KHOẢN")
+            else:
+                self.tab_widget.addTab(self.account_tab, "👥 QUẢN LÝ TÀI KHOẢN")
             print("[DEBUG] MainWindow: Đã khởi tạo AccountManagementTab thành công.")
         except Exception as e:
             print(f"[ERROR] MainWindow: Lỗi khi khởi tạo AccountManagementTab: {e}")
@@ -177,7 +218,10 @@ class MainWindow(QMainWindow):
         print("[DEBUG] MainWindow: Đang khởi tạo MessagingTab.")
         try:
             self.messaging_tab = MessagingTab(self.account_tab)
-            self.tab_widget.addTab(self.messaging_tab, "Nhắn tin")
+            if hasattr(self.tab_widget, 'add_tab_with_icon'):
+                self.tab_widget.add_tab_with_icon(self.messaging_tab, "📱", "TIN NHẮN")
+            else:
+                self.tab_widget.addTab(self.messaging_tab, "📱 TIN NHẮN")
             print("[DEBUG] MainWindow: Đã khởi tạo MessagingTab thành công.")   
         except Exception as e:
             print(f"[ERROR] MainWindow: Lỗi khi khởi tạo MessagingTab: {e}")
@@ -190,7 +234,10 @@ class MainWindow(QMainWindow):
         print("[DEBUG] MainWindow: Đang khởi tạo DataScannerTab.")
         try:
             self.scanner_tab = DataScannerTab()
-            self.tab_widget.addTab(self.scanner_tab, "Quét dữ liệu")
+            if hasattr(self.tab_widget, 'add_tab_with_icon'):
+                self.tab_widget.add_tab_with_icon(self.scanner_tab, "🔍", "QUÉT DỮ LIỆU")
+            else:
+                self.tab_widget.addTab(self.scanner_tab, "🔍 QUÉT DỮ LIỆU")
             print("[DEBUG] MainWindow: Đã khởi tạo DataScannerTab thành công.")
         except Exception as e:
             print(f"[ERROR] MainWindow: Lỗi khi khởi tạo DataScannerTab: {e}")
@@ -203,7 +250,10 @@ class MainWindow(QMainWindow):
         print("[DEBUG] MainWindow: Đang khởi tạo ProxyManagementTab.")
         try:
             self.proxy_tab = ProxyManagementTab()
-            self.tab_widget.addTab(self.proxy_tab, "Quản lý Proxy")
+            if hasattr(self.tab_widget, 'add_tab_with_icon'):
+                self.tab_widget.add_tab_with_icon(self.proxy_tab, "🌐", "QUẢN LÝ PROXY")
+            else:
+                self.tab_widget.addTab(self.proxy_tab, "🌐 QUẢN LÝ PROXY")
             print("[DEBUG] MainWindow: Đã khởi tạo ProxyManagementTab thành công.") 
         except Exception as e:
             print(f"[ERROR] MainWindow: Lỗi khi khởi tạo ProxyManagementTab: {e}")
@@ -294,7 +344,7 @@ class MainWindow(QMainWindow):
             logging.error(f"Error during closeEvent: {e}")
             super().closeEvent(event)
 
-def apply_qss(app: QApplication, filename: str = "src/style.qss") -> None:
+def apply_qss(app: QApplication, filename: str = "src/style_modern.qss") -> None:
     print(f"[DEBUG] apply_qss: Đang cố gắng đọc file CSS: {filename}")
     try:
         with open(filename, "r", encoding="utf-8") as f:
